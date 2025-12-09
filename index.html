@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fokus.Co.Lab – Consultation opérationnelle pragmatique</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Fokus.Co.Lab accompagne les PME en croissance avec une approche de consultation concrète, terrain et orientée résultats."
+  />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Changa+One&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg-main: #f7f5f1;      /* fond général, dérivé du jaune mais adouci */
+      --primary: #1c164f;      /* mauve Fokus.Co.Lab */
+      --accent: #f3dfa2;       /* jaune Fokus.Co.Lab */
+      --text: #4b4f63;         /* gris bleuté contraste */
+      --text-soft: #6f7484;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.04);
+      --radius-lg: 20px;
+      --radius-sm: 12px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(247, 245, 241, 0.9);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Changa One", system-ui;
+      letter-spacing: 0.06em;
+      font-size: 20px;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, var(--accent) 0, var(--primary) 70%);
+      background-size: cover;
+      background-position: center;
+      /* 👉 Si tu as un fichier de logo, remplace la ligne ci-dessous
+         par, par exemple :
+         background-image: url("logo-fokuscolab.svg");
+         background-repeat: no-repeat;
+         background-size: contain;
+         background-color: transparent;
+      */
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--primary);
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn-primary {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(28, 22, 79, 0.4);
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(28, 22, 79, 0.55);
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 60px;
+      align-items: center;
+      padding: 40px 0 60px;
+    }
+
+    .hero-title {
+      font-family: "Changa One", system-ui;
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-soft);
+      max-width: 540px;
+      margin-bottom: 28px;
+    }
+
+    .hero-subtitle strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 9px 18px;
+      font-size: 14px;
+      background: #ffffff;
+      cursor: pointer;
+      transition: background 0.12s ease-out, border-color 0.12s ease-out;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      color: var(--text-soft);
+      font-size: 11px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 220px;
+    }
+
+    .blob {
+      position: absolute;
+      inset: 0;
+      border-radius: 50% 60% 50% 70%;
+      background: radial-gradient(circle at 10% 0, var(--accent) 0, #f7f5f1 22%, #c8c0ff 55%, var(--primary) 100%);
+      opacity: 0.9;
+      filter: blur(0.6px);
+    }
+
+    .hero-card {
+      position: absolute;
+      inset: auto 12% 10% auto;
+      max-width: 260px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
+
+    .hero-card-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+
+    .hero-card-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(243, 223, 162, 0.25);
+      color: var(--text-soft);
+      font-size: 11px;
+      margin-top: 10px;
+    }
+
+    /* Sections */
+
+    section {
+      margin-top: 60px;
+    }
+
+    .section-title {
+      font-family: "Changa One", system-ui;
+      font-size: 1.9rem;
+      margin-bottom: 28px;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      color: var(--text-soft);
+      margin-bottom: 20px;
+      max-width: 620px;
+      font-size: 0.95rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 20px 20px 22px;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.92rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .card p {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+    .pill-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(243, 223, 162, 0.4);
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: var(--primary);
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4px 30px;
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      margin-bottom: 18px;
+    }
+
+    .services-list li::marker {
+      color: var(--primary);
+    }
+
+    .approach-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .step-number {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      margin-bottom: 8px;
+      background: #ffffff;
+      color: var(--primary);
+    }
+
+    .contact-block {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 520px;
+    }
+
+    .contact-block small {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .grid-3,
+      .approach-steps,
+      .services-list {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-links {
+        display: none; /* simplification mobile pour commencer */
+      }
+
+      header {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <div class="logo-mark"></div>
+        <span>Fokus.Co.Lab</span>
+      </div>
+      <div class="nav-links">
+        <a href="#accueil">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#approche">Approche</a>
+        <a href="#apropos">À propos</a>
+        <a href="#contact">Contact</a>
+        <button class="btn-primary">Planifier un appel</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="accueil" class="hero">
+      <div>
+        <div class="hero-tagline">
+          <span>Aligner</span>·<span>Optimiser</span>·<span>Propulser</span>
+        </div>
+        <h1 class="hero-title">La consultation qui clarifie, simplifie et accélère.</h1>
+        <p class="hero-subtitle">
+          Fokus.Co.Lab accompagne les PME en croissance avec une approche pragmatique et opérationnelle.
+          Pas de théories floues. Pas de projets interminables.
+          <strong>Juste ce qui fonctionne — maintenant.</strong>
+        </p>
+        <div class="hero-cta">
+          <button class="btn-primary">Réserver un appel découverte</button>
+          <button class="btn-ghost">Découvrir notre approche</button>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="blob"></div>
+        <div class="hero-card">
+          <div class="hero-card-title">Moins de chaos, plus de clarté.</div>
+          <p>
+            Fokus.Co.Lab aide votre équipe de direction à reprendre le contrôle de ses opérations
+            sans alourdir la structure.
+          </p>
+          <div class="hero-card-pill">
+            <span>PME en croissance</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pourquoi Fokus.Co.Lab -->
+    <section>
+      <h2 class="section-title">Pourquoi Fokus.Co.Lab?</h2>
+      <p class="section-subtitle">
+        Fokus.Co.Lab se positionne comme l’inverse des mandats flous, coûteux et interminables.
+        Notre approche est concrète, terrain et orientée résultats.
+      </p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="pill-icon">✓</div>
+          <h3>Du concret, pas du flou</h3>
+          <p>
+            Nos mandats sont courts, précis et orientés résultats.
+            On identifie ce qui doit changer maintenant, et on agit dessus.
+          </p>
+        </div>
+        <div class="card">
+          <div class="pill-icon">⇲</div>
+          <h3>Une approche terrain</h3>
+          <p>
+            On travaille dans vos opérations, pas autour.
+            Nos recommandations sont immédiatement applicables.
+          </p>
+        </div>
+        <div class="card">
+          <div class="pill-icon">⚙︎</div>
+          <h3>Zéro complexité inutile</h3>
+          <p>
+            Les processus doivent simplifier la vie des équipes — jamais devenir eux-mêmes
+            un goulot d’étranglement.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ce que nous faisons -->
+    <section>
+      <h2 class="section-title">Ce que nous faisons</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Stratégie &amp; alignement</h3>
+          <p>
+            Clarifier les priorités, les objectifs et les responsabilités.
+            Aligner la direction et les équipes sur une même feuille de route.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Optimisation des opérations</h3>
+          <p>
+            Simplifier ce qui est lourd, formaliser ce qui est flou,
+            et fluidifier les processus clés du quotidien.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Soutien opérationnel flexible</h3>
+          <p>
+            8 à 16 heures par semaine pour aider la direction à garder le rythme,
+            sans créer un nouveau poste prématurément.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Outils de pilotage</h3>
+          <p>
+            Mettre en place des indicateurs, tableaux de bord et rituels de gestion
+            qui donnent rapidement l’heure juste.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <h2 class="section-title">Nos services</h2>
+      <p class="section-subtitle">
+        Les mandats sont construits sur mesure, mais s’articulent généralement autour des volets suivants.
+      </p>
+      <ul class="services-list">
+        <li>Diagnostic stratégique express</li>
+        <li>Feuille de route actionnable</li>
+        <li>Accompagnement opérationnel</li>
+        <li>Optimisation de processus</li>
+        <li>Soutien RH / admin / finance (léger)</li>
+        <li>Coordination de projets</li>
+        <li>Structuration des indicateurs</li>
+        <li>Gouvernance &amp; rythme de gestion</li>
+        <li>Appui tactique aux dirigeants</li>
+      </ul>
+      <button class="btn-ghost">Voir tous les services</button>
+    </section>
+
+    <!-- Approche -->
+    <section id="approche">
+      <h2 class="section-title">Notre approche</h2>
+      <p class="section-subtitle">
+        L’objectif n’est pas de produire un rapport supplémentaire, mais de soutenir des changements concrets,
+        réalistes et soutenables.
+      </p>
+      <div class="approach-steps">
+        <div>
+          <div class="step-number">1</div>
+          <h3>Aligner</h3>
+          <p>
+            Comprendre votre contexte, clarifier les objectifs et
+            recentrer l’organisation sur ce qui crée réellement de la valeur.
+          </p>
+        </div>
+        <div>
+          <div class="step-number">2</div>
+          <h3>Optimiser</h3>
+          <p>
+            Réduire les frictions, simplifier les opérations, structurer les processus
+            et répartir les responsabilités.
+          </p>
+        </div>
+        <div>
+          <div class="step-number">3</div>
+          <h3>Propulser</h3>
+          <p>
+            Installer des outils de pilotage et des rythmes de gestion qui soutiennent la croissance,
+            sans la ralentir.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="apropos">
+      <h2 class="section-title">À propos de Fokus.Co.Lab</h2>
+      <p class="section-subtitle">
+        Fokus.Co.Lab est une firme de consultation en stratégie opérationnelle dédiée aux PME en croissance.
+        Notre approche est résolument pragmatique : comprendre rapidement votre réalité, clarifier vos priorités
+        et vous accompagner dans des actions concrètes qui génèrent un impact tangible.
+      </p>
+      <p class="section-subtitle">
+        Nous croyons qu’une organisation performante n’a pas besoin d’être complexe.
+        Elle doit être alignée, fluide et simple à piloter.
+      </p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-block">
+        <p>
+          Vous souhaitez discuter d’un besoin précis, valider si Fokus.Co.Lab peut vous aider
+          ou obtenir une proposition?
+        </p>
+        <p>
+          Écrivez-nous ou planifiez un appel découverte.
+        </p>
+        <button class="btn-primary">Réserver un appel découverte</button>
+        <small>
+          Courriel (à venir) · Basée au Québec · Accompagnement possible à distance ou en présentiel.
+        </small>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© Fokus.Co.Lab 2025</span>
+    <span>Aligner. Optimiser. Propulser.</span>
+  </footer>
+</body>
+</html>
