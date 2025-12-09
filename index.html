@@ -9,9 +9,13 @@
     content="Fokus.Co.Lab accompagne les PME en croissance avec une approche de consultation concrète, terrain et orientée résultats."
   />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts : DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     :root {
@@ -34,9 +38,8 @@
     }
 
     body {
-  font-family: "DM Sans", sans-serif;
-  font-weight: 400;
-}
+      font-family: "DM Sans", sans-serif;
+      font-weight: 400;
       color: var(--text);
       background: var(--bg-main);
       line-height: 1.6;
@@ -70,27 +73,18 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-family: "Changa One", system-ui;
+      font-family: "DM Sans", sans-serif;
       letter-spacing: 0.06em;
-      font-size: 20px;
+      font-size: 18px;
       text-transform: uppercase;
       color: var(--primary);
     }
 
-    .logo-mark {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, var(--accent) 0, var(--primary) 70%);
-      background-size: cover;
-      background-position: center;
-      /* 👉 Si tu as un fichier de logo, remplace la ligne ci-dessous
-         par, par exemple :
-         background-image: url("logo-fokuscolab.svg");
-         background-repeat: no-repeat;
-         background-size: contain;
-         background-color: transparent;
-      */
+    .logo-image {
+      height: 34px;      /* tu peux ajuster cette hauteur si tu le veux plus gros */
+      width: auto;
+      display: block;
+      border-radius: 6px;
     }
 
     .nav-links {
@@ -264,6 +258,7 @@
     .section-title {
       font-family: "DM Sans", sans-serif;
       font-weight: 700;
+      font-size: 1.9rem;
       margin-bottom: 28px;
       color: var(--primary);
     }
@@ -296,9 +291,10 @@
     }
 
     .card h3 {
-      font-size: 1rem;
+      font-size: 1.05rem;
       margin-bottom: 8px;
       color: var(--primary);
+      font-weight: 600;
     }
 
     .card p {
@@ -307,15 +303,15 @@
     }
 
     .pill-icon {
-      width: 32px;
-      height: 32px;
+      width: 44px;          /* PLUS GRANDES ICÔNES */
+      height: 44px;
       border-radius: 999px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(243, 223, 162, 0.4);
-      margin-bottom: 10px;
-      font-size: 16px;
+      background: rgba(243, 223, 162, 0.55);
+      margin-bottom: 12px;
+      font-size: 22px;      /* icône plus grosse */
       color: var(--primary);
     }
 
@@ -415,7 +411,8 @@
   <header>
     <nav class="nav">
       <div class="logo">
-        <div class="logo-mark"></div>
+        <!-- Mets ton fichier de logo dans le repo et ajuste le nom si besoin -->
+        <img src="logo-fokuscolab.png" alt="Logo Fokus.Co.Lab" class="logo-image">
         <span>Fokus.Co.Lab</span>
       </div>
       <div class="nav-links">
@@ -466,32 +463,35 @@
     <section>
       <h2 class="section-title">Pourquoi Fokus.Co.Lab?</h2>
       <p class="section-subtitle">
-        Fokus.Co.Lab se positionne comme l’inverse des mandats flous, coûteux et interminables.
-        Notre approche est concrète, terrain et orientée résultats.
+        Votre entreprise n'a pas besoin d'accumuler des diagnostics et rapport volumineux.
+        Elle a besoin d'un regard lucide, de priorités claires et d'actions qui transforment réellement leur day-to-day. 
       </p>
       <div class="grid-3">
         <div class="card">
           <div class="pill-icon">✓</div>
-          <h3>Du concret, pas du flou</h3>
+          <h3>Clarté radicale, résultats rapides</h3>
           <p>
-            Nos mandats sont courts, précis et orientés résultats.
-            On identifie ce qui doit changer maintenant, et on agit dessus.
+           Fini les mandats flous et les livrables de 100 pages.
+            On identifie les enjeux réels, on coupe le bruit, et on passe à l’action.
+            Vous voyez l’impact tout de suite — pas dans six mois.          
           </p>
         </div>
         <div class="card">
           <div class="pill-icon">⇲</div>
-          <h3>Une approche terrain</h3>
+          <h3>Une approche terrain, pas théorique</h3>
           <p>
-            On travaille dans vos opérations, pas autour.
-            Nos recommandations sont immédiatement applicables.
+            On s’immerge dans vos opérations, vos outils, vos conversations, vos goulots.
+            On observe, on optimise, on structure.
+            Nos recommandations sont déjè prête à être implantées au jour 1.
           </p>
         </div>
         <div class="card">
           <div class="pill-icon">⚙︎</div>
-          <h3>Zéro complexité inutile</h3>
+          <h3>Complexité minimale. Efficacité maximale</h3>
           <p>
-            Les processus doivent simplifier la vie des équipes — jamais devenir eux-mêmes
-            un goulot d’étranglement.
+            On modernise, on simplifie, on standardise.
+            Sans jargon. Sans lourdeur. Sans obstacle.
+            Les processus doivent simplifier la vie des équipes — pas la compliquer.
           </p>
         </div>
       </div>
